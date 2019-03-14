@@ -24,15 +24,21 @@ public class SearchDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void detailView(Search s, HttpServletRequest req){
+		req.setAttribute("sr", ss.getMapper(SearchMapper.class).detailView(s));
+	}
+	
 	public Searchs getSelect2(Search s, HttpServletRequest req) {
 		try {
 			SearchMapper sm = ss.getMapper(SearchMapper.class);
-			List<Search> searchs = sm.searchFestival(s);
-			Searchs s2 = new Searchs(searchs);
+			List<Search> search = sm.searchFestival(s);
+			Searchs s2 = new Searchs(search);
 			return s2;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
+	
 }

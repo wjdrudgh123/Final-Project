@@ -16,30 +16,27 @@
 				data : {ge_title : keyword},
 				success : function(data) {
 					$(".searchResultTable").empty();
-					$(data).find("searchs").each(function(i, search){
-						
-						var ge_title = $(search).find("ge_title").text();
-						var ge_start_date = $(search).find("ge_start_date").text();
-						var ge_end_date = $(search).find("ge_end_date").text();
-						var ge_addr = $(search).find("ge_addr").text();
+					$(data).find("search").each(function(i, search){
+			  			var ge_title = $(search).find("ge_title").text();
 						var ge_image = $(search).find("ge_image").text();
-						var ge_image2 = $("<img>").attr("src", ge_image).css("width", "300px");
-						var td1 = $("<td></td>").append(ge_image2).css('max-width','100%');
+						var ge_image2 = $("<img>").attr("src", ge_image).css("width", "100px");
+						var td1 = $("<td></td>").append(ge_image2);
 						var td2 = $("<td></td>").text(ge_title);
-						var td3 = $("<td></td>").text(ge_start_date);
-						var td4 = $("<td></td>").text(ge_end_date);
-						var td5 = $("<td></td>").text(ge_addr);
-						
-						var tr1 = $("<tr></tr>").append(td1);
-						var tr2 = $("<tr></tr>").append(td2);
-						var tr3 = $("<tr></tr>").append(td3);
-						var tr4 = $("<tr></tr>").append(td4);
-						var tr5 = $("<tr></tr>").append(td5);
-						
-						$(".searchResultTable").prepend(tr1, tr2, tr3, tr4, tr5);
+						var tr1 = $("<tr class='result'></tr>").append(td1, td2);	
+						$(".searchResultTable").prepend(tr1);
 					});
+					
+					if (keyword.length == 0) {
+						$(".searchResultTable").empty();	
+					}
+					
+					$(".result").click(function() {
+						var text = $(this).text();
+						location.href = "detail.go?ge_title="+text;
+					});
+					
 					var win = $(window).width();
-					$(".searchResultTable").css("width", win + "px");
+					$(".searchResultTable").css("width", win + "px").css("border-collapse","collapse");
 				}
 			});
 		});

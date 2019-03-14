@@ -1,5 +1,9 @@
 package com.soldesk.festival.search;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Search {
 	private String ge_title;
 	private String ge_start_date;
@@ -23,7 +27,8 @@ public class Search {
 	public String getGe_title() {
 		return ge_title;
 	}
-
+	
+	@XmlElement
 	public void setGe_title(String ge_title) {
 		this.ge_title = ge_title;
 	}
@@ -31,7 +36,7 @@ public class Search {
 	public String getGe_start_date() {
 		return ge_start_date;
 	}
-
+	@XmlElement
 	public void setGe_start_date(String ge_start_date) {
 		this.ge_start_date = ge_start_date;
 	}
@@ -39,7 +44,7 @@ public class Search {
 	public String getGe_end_date() {
 		return ge_end_date;
 	}
-
+	@XmlElement
 	public void setGe_end_date(String ge_end_date) {
 		this.ge_end_date = ge_end_date;
 	}
@@ -47,7 +52,7 @@ public class Search {
 	public String getGe_addr() {
 		return ge_addr;
 	}
-
+	@XmlElement
 	public void setGe_addr(String ge_addr) {
 		this.ge_addr = ge_addr;
 	}
@@ -55,7 +60,7 @@ public class Search {
 	public String getGe_image() {
 		return ge_image;
 	}
-
+	@XmlElement
 	public void setGe_image(String ge_image) {
 		this.ge_image = ge_image;
 	}

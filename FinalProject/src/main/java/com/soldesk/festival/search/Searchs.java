@@ -7,24 +7,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Searchs {
-	private List<Search> searchs;
+	private List<Search> search;
 	
 	public Searchs() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Searchs(List<Search> searchs) {
+	public Searchs(List<Search> search) {
 		super();
-		this.searchs = searchs;
+		this.search = search;
 	}
-
-	public List<Search> getSearchs() {
-		return searchs;
+	
+	public List<Search> getSearch() {
+		return search;
 	}
-
 	@XmlElement
-	public void setSearchs(List<Search> searchs) {
-		this.searchs = searchs;
+	public void setSearch(List<Search> search) {
+		this.search = search;
 	}
 
 }

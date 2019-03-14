@@ -53,6 +53,9 @@
 		font-size: 15px;
 		font-weight: bold;
 	}
+	.searchResultTable tr:HOVER{
+		background-color: #BDBDBD;
+	}
 	.searchResultTable td{
 		width:100%;
 	}

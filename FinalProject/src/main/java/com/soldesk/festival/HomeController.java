@@ -33,12 +33,18 @@ public class HomeController {
 	@RequestMapping(value = "/search.go", method = RequestMethod.GET)
 	public String goSearch(Search s, HttpServletRequest req) {
 		req.setAttribute("contentPage", "search.jsp");
-//		sDAO.getSelect(s, req);
 		return "index";
 	}
 	@RequestMapping(value = "/search.get", method = RequestMethod.GET,
 			produces = "application/xml; charset=utf-8")
 	public @ResponseBody Searchs goSearch2(Search s, HttpServletRequest req) {
 		return sDAO.getSelect2(s, req);
+	}
+	
+	@RequestMapping(value = "/detail.go", method = RequestMethod.GET)
+	public String goDetail(Search s, HttpServletRequest req) {
+		sDAO.detailView(s, req);
+		req.setAttribute("contentPage", "detail.jsp");
+		return "index";
 	}
 }
