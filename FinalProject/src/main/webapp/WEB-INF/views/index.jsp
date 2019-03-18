@@ -9,6 +9,7 @@
 <title>요기 갈까You?</title>
 <link rel="stylesheet" href="resources/css/index.css">
 <link rel="stylesheet" href="resources/css/searchMenu.css">
+<link rel="stylesheet" href="resources/css/calendar.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script type="text/javascript" src="resources/js/go.js"></script>
