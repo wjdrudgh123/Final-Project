@@ -3,8 +3,8 @@
  */
 
 function calendar_init() {
-	$("body").css('max-height','100%').css('overflow','hidden');
-	$(".contentBody").css('height','100%').css('overflow','auto');
+	$("body").css('max-height', '100%').css('overflow', 'hidden');
+	$(".contentBody").css('height', '100%').css('overflow', 'auto');
 	$("#dialog_field").hide();
 }
 function click_calendar_date() {
@@ -108,9 +108,9 @@ function show_calendar(y, m, d) {
 
 	var events = send_controller(y, m);
 	var temp = '';
-	
+
 	var flag = false;
-	
+
 	var ld = last_day(y, m, d);
 	var day = ld[0] + 1;
 
@@ -123,130 +123,150 @@ function show_calendar(y, m, d) {
 
 	var week_character = $("<div class='week_character'></div>");
 
-
-	for(var i = 0; i < 7; i++){
+	for (var i = 0; i < 7; i++) {
 		switch (i) {
-			case 0:
-				var td = $("<span class='day_of_the_week'></span>").text('일').css('color', 'red');
-				break;
-			case 1:
-				var td = $("<span class='day_of_the_week'></span>").text('월');
-				break;
-			case 2:
-				var td = $("<span class='day_of_the_week'></span>").text('화');
-				break;
-			case 3:
-				var td = $("<span class='day_of_the_week'></span>").text('수');
-				break;
-			case 4:
-				var td = $("<span class='day_of_the_week'></span>").text('목');
-				break;
-			case 5:
-				var td = $("<span class='day_of_the_week'></span>").text('금');
-				break;
-			case 6:
-				var td = $("<span class='day_of_the_week'></span>").text('토');
-				break;
+		case 0:
+			var td = $("<span class='day_of_the_week'></span>").text('일').css(
+					'color', 'red');
+			break;
+		case 1:
+			var td = $("<span class='day_of_the_week'></span>").text('월');
+			break;
+		case 2:
+			var td = $("<span class='day_of_the_week'></span>").text('화');
+			break;
+		case 3:
+			var td = $("<span class='day_of_the_week'></span>").text('수');
+			break;
+		case 4:
+			var td = $("<span class='day_of_the_week'></span>").text('목');
+			break;
+		case 5:
+			var td = $("<span class='day_of_the_week'></span>").text('금');
+			break;
+		case 6:
+			var td = $("<span class='day_of_the_week'></span>").text('토');
+			break;
 		}
 		week_character.append(td);
 	}
 	$("#dates").append(week_character);
-	
+
 	var monthField = $("<div id='monthField'></div>");
-	
-	for(var i = 0; i < 6; i++){
+
+	for (var i = 0; i < 6; i++) {
 		var week_record = $("<div class='week_record'></div>");
-		
-		for(var j = 0; j < 7; j++){
-			if(i == 0){
-				if(day == j || day < j){
-					if(day == 0){
+
+		for (var j = 0; j < 7; j++) {
+			if (i == 0) {
+				if (day == j || day < j) {
+					if (day == 0) {
 						day = 7;
 						start = ld[1] - (day - j) + 1;
-						var date_number = $("<span class='date_number'></span>").text(start).css("color","#FAFAFA");
-						var date_div = $("<div class='date_div'></span>").append(date_number);
-					}else{
-						if(start > 10){
-							start = 1;	
+						var date_number = $("<span class='date_number'></span>")
+								.text(start).css("color", "#FAFAFA");
+						var date_div = $("<div class='date_div'></span>")
+								.append(date_number);
+					} else {
+						if (start > 10) {
+							start = 1;
 						}
-						var date_number = $("<span class='date_number'></span>").text(start);
-						var date_div = $("<div class='date_div'></span>").append(date_number);
-						
-						temp = temp_date(y,m,start);
+						var date_number = $("<span class='date_number'></span>")
+								.text(start);
+						var date_div = $("<div class='date_div'></span>")
+								.append(date_number);
+
+						temp = temp_date(y, m, start);
 						var div = $("<div class='title_div'></div>");
-						
-						$.each(events.events, function(i, e){
-							if(e.ge_start_date == temp){
+
+						$.each(events.events, function(i, e) {
+							if (e.ge_start_date == temp) {
 								var title = e.ge_title;
 								titles = title.split(" ");
 								title = '';
-								for(var l = 0; l < (titles.length - 1); l++){
-									if(titles[l].indexOf("2019") == -1){
-										title += titles[l]+" ";
-									}else{
+								for (var l = 0; l < (titles.length - 1); l++) {
+									if (titles[l].indexOf("2019") == -1 || titles[l].indexOf("유망축제") == -1) {
+										title += titles[l] + " ";
+									}else {
 										continue;
 									}
 								}
-								var title_div = $("<span class='title_span'></span>").text(title);
+								var title_div = $(
+										"<span class='title_span'></span>")
+										.text(title);
 								div.append(title_div);
 								date_div.append(div);
 							}
 						});
-					}	
+					}
 					week_record.append(date_div);
 					start += 1;
-				}else{
-					if(day > j){
+				} else {
+					if (day > j) {
 						start = ld[1] - (day - j) + 1;
 					}
-					var date_number = $("<span class='date_number'></span>").text(start).css("color","#FAFAFA");
-					var date_div = $("<div class='date_div'></span>").append(date_number);
+					var date_number = $("<span class='date_number'></span>")
+							.text(start).css("color", "#9E9E9E");
+					var date_div = $("<div class='date_div'></span>").append(
+							date_number);
 					week_record.append(date_div);
 				}
-			}else{
-				if(flag == false){			
-					if(d < start){
-						if(i == 1){
+			} else {
+				if (flag == false) {
+					if (d < start) {
+						if (i == 1) {
 							start = 1;
-							var date_number = $("<span class='date_number'></span>").text(start);
-							var date_div = $("<div class='date_div'></span>").append(date_number);
-						}else{
+							var date_number = $(
+									"<span class='date_number'></span>").text(
+									start);
+							var date_div = $("<div class='date_div'></span>")
+									.append(date_number);
+						} else {
 							start = 1;
-							var date_number = $("<span class='date_number'></span>").text(start).css("color","#FAFAFA");
-							var date_div = $("<div class='date_div'></span>").append(date_number);
+							var date_number = $(
+									"<span class='date_number'></span>").text(
+									start).css("color", "#9E9E9E");
+							var date_div = $("<div class='date_div'></span>")
+									.append(date_number);
 							flag = true;
 						}
-					}else{
-						var date_number = $("<span class='date_number'></span>").text(start);
-						var date_div = $("<div class='date_div'></span>").append(date_number);
+					} else {
+						var date_number = $("<span class='date_number'></span>")
+								.text(start);
+						var date_div = $("<div class='date_div'></span>")
+								.append(date_number);
 					}
-					if(flag != true){
-						temp = temp_date(y,m,start);
-						
+					if (flag != true) {
+						temp = temp_date(y, m, start);
+
 						var div = $("<div class='title_div'></div>");
-						$.each(events.events, function(i, e){
-							if(e.ge_start_date == temp){
+						$.each(events.events, function(i, e) {
+							if (e.ge_start_date == temp) {
 								var title = e.ge_title;
 								titles = title.split(" ");
 								title = '';
-								for(var l = 0; l < (titles.length - 1); l++){
-									if(titles[l].indexOf("2019") == -1){
-										title += titles[l]+" ";
-									}else{
+								for (var l = 0; l < (titles.length - 1); l++) {
+									if (titles[l].indexOf("2019") == -1) {
+										title += titles[l] + " ";
+									} else {
 										continue;
 									}
 								}
-								var title_div = $("<span class='title_span'></span>").text(title);
+								var title_div = $(
+										"<span class='title_span'></span>")
+										.text(title);
 								div.append(title_div);
 								date_div.append(div);
 							}
 						});
 					}
-					
-				}else{
-					var date_number = $("<span class='date_number'></span>").text(start).css("color","#FAFAFA");
-					var date_div = $("<div class='date_div'></span>").append(date_number);
-				}			
+
+				} else {
+					var date_number = $("<span class='date_number'></span>")
+							.text(start).css("color", "#FAFAFA");
+					var date_div = $("<div class='date_div'></span>").append(
+							date_number);
+				}
 				week_record.append(date_div);
 				start += 1;
 			}
@@ -270,7 +290,7 @@ function last_day(y, m, d) {
 		day = check_month(temp);
 	}
 	var lastDay = new Date(year + "-" + temp + "-" + day).getDay();
-	var reval = [lastDay, day];
+	var reval = [ lastDay, day ];
 	return reval;
 }
 
@@ -296,22 +316,22 @@ function send_controller(y, m) {
 	});
 	return eventJson;
 }
-function temp_date(y,m,start){
+function temp_date(y, m, start) {
 	var temp_m = '';
 	var temp_d = '';
 	var temp = '';
-	
-	if(m < 10){
-		temp_m = "0"+m;
-	}else{
+
+	if (m < 10) {
+		temp_m = "0" + m;
+	} else {
 		temp_m = m;
 	}
-	if(start < 10){
-		temp_d = "0"+start;
-	}else{
+	if (start < 10) {
+		temp_d = "0" + start;
+	} else {
 		temp_d = start;
 	}
-	
-	temp = y+temp_m+temp_d;
+
+	temp = y + temp_m + temp_d;
 	return temp;
 }

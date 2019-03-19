@@ -203,7 +203,7 @@
 	}
 }
 
-/* 모바일 */
+/* 모바일 */ /*last correction 19.3.18.*/
 @media only screen and (max-width: 768px){
 	::-webkit-scrollbar {
 		display: none;
@@ -215,16 +215,9 @@
 	}
 	.wrapper {
 		background-color: #FFCCCC;
-		position:relative;
 		height: 100%;
 		display: grid;
-		grid-template-rows:80%;
-	}
-	.header{
-		position:fixed;
-		height:10%;
-		top:0;
-		width:100%;
+		grid-template-rows: 10% 80% 10%;
 	}
 	.titleArea{
 		height:100%;
@@ -240,21 +233,11 @@
 	#imgIconTd{
 		display:none;
 	}
-	
 	.contentBody{
-		position:relative;
-		top:15%;
 		text-align:center;
 		width:100%;
 		height:100%;
 		overflow:auto;
-	}
-	
-	.footer{
-		position:fixed;
-		height:10%;
-		width:100%;
-		bottom:0;
 	}
 	.manuTable {
 		width: 100%;
@@ -262,11 +245,9 @@
 		background-color: #1DE9B6;
 		font-family: TitleText;
 	}
-	
 	.tabSlideManu{
 		display:none;
 	}
-	
 	.introduceTitle {
 		font-size: 25px;
 		font-weight: bold;
